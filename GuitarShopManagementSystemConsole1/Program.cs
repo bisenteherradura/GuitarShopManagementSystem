@@ -3,7 +3,16 @@
 using GuitarShopManagementSystem;
 
 InventoryManager inventoryManager = new InventoryManager();
+UserManager UserManager = new UserManager();
 
+static void DisplayBorder()
+{
+    Console.WriteLine("+----------------------------------------+");
+    Console.WriteLine("|             Guitar Shop                |");
+    Console.WriteLine("+----------------------------------------+");
+}
+
+DisplayBorder();
 Console.WriteLine("1. Login");
 Console.WriteLine("2. Sign up");
 Console.WriteLine("3. Guest User");
@@ -15,6 +24,9 @@ while (true)
 {
     switch (op)
     {
+        case 2:
+            UserManager.SignUp();
+            break;
         case 3:
             Console.WriteLine("WELCOME USER!");
             Console.WriteLine("1. Categories");

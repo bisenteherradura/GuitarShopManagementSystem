@@ -1,8 +1,8 @@
 ﻿namespace GuitarShopManagementSystem
 {
-    public class CustomerManager
+    public class CustomerManager : UserManager
     {
-        public void CustomerProfile()
+        public void GetCustomerDetails()
         {
 
         }
