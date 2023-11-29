@@ -9,7 +9,9 @@ namespace GuitarShopManagementSystemModel.Model
     public class CustomerModel
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string address {  get; set; }
+        public int PNum { get; set; }
     }
 }

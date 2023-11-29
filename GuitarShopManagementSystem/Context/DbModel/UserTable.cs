@@ -9,7 +9,8 @@ namespace GuitarShopManagementSystem.Context.DbModel
 {
     public class UserTable
     {
-        [Key]public int UserId { get; set; }
+        [Key]
+        public int UserId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
 
