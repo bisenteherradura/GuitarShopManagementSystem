@@ -14,43 +14,58 @@ Console.WriteLine("+----------------------------------------+");
 Console.WriteLine("1. Login");
 Console.WriteLine("2. Sign up");
 Console.WriteLine("3. Guest User");
+Console.WriteLine("4. Exit");
 Console.Write("Enter an option: ");
 int op = int.Parse(Console.ReadLine());
 Console.Clear();
-
 while (true)
 {
     switch (op)
     {
         case 1:
-            Console.Write("Username: ");
-            customerManager.UserName = Console.ReadLine();
-            Console.Write("Password: ");
-            customerManager.Password = Console.ReadLine();
-            int userId = customerManager.Login();
+            bool loginSuccessful = false;
 
-            if (userId != 0)
+            do
             {
-                customerManager.Id = userId;
-                CustomerManager.CustomerModel userDetails = customerManager.GetCustomerDetails();
+                Console.Write("Username: ");
+                customerManager.UserName = Console.ReadLine();
+                Console.Write("Password: ");
+                customerManager.Password = Console.ReadLine();
+                int userId = customerManager.Login();
 
-                Console.Clear();
+                if (userId != 0)
+                {
+                    customerManager.Id = userId;
+                    CustomerManager.CustomerModel userDetails = customerManager.GetCustomerDetails();
 
-                string wlcm;
+                    Console.Clear();
 
-                wlcm = $"WELCOME {userDetails.FName} {userDetails.LName}";
-                Console.WriteLine(wlcm);
-            }
-            Console.WriteLine("1. Categories");
-            Console.WriteLine("2. Shopping Cart");
-            Console.Write("Enter an option: ");
-            int op1 = int.Parse(Console.ReadLine());
-            Console.Clear();
-            if (op1 == 1)
-            {
-                Console.WriteLine("Categories");
-                inventoryManager.Categories();
-            }
+                    string wlcm;
+
+                    wlcm = $"WELCOME {userDetails.FName} {userDetails.LName}";
+                    Console.WriteLine(wlcm);
+
+                    Console.WriteLine("1. Categories");
+                    Console.WriteLine("2. Shopping Cart");
+                    Console.Write("Enter an option: ");
+                    int op1 = int.Parse(Console.ReadLine());
+                    Console.Clear();
+
+                    if (op1 == 1)
+                    {
+                        Console.WriteLine("Categories");
+                        inventoryManager.Categories();
+                    }
+
+                    loginSuccessful = true; 
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Login failed. Invalid username or password. Please try again.");
+                }
+            } while (!loginSuccessful);
+
             break;
         case 2:
             Console.WriteLine("+----------------------------------------+");
@@ -90,6 +105,8 @@ while (true)
                 inventoryManager.Categories();
             }
             break;
+        case 4:
+            return;
     }
     break;
 }
