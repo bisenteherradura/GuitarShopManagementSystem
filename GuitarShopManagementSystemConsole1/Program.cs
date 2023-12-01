@@ -40,10 +40,14 @@ while (true)
 
                     Console.Clear();
 
-                    string wlcm;
+                    string wlcm1 = "+-----------------------------------+";
+                    string wlcm2 = $"        Welcome {userDetails.FName} {userDetails.LName.ToUpper()}";
+                    string wlcm3 = "+-----------------------------------+";
 
-                    wlcm = $"WELCOME {userDetails.FName} {userDetails.LName}";
-                    Console.WriteLine(wlcm);
+                    Console.WriteLine(wlcm1);
+                    Console.WriteLine(wlcm2);
+                    Console.WriteLine(wlcm3);
+
 
                     Console.WriteLine("1. Categories");
                     Console.WriteLine("2. Shopping Cart");
@@ -53,8 +57,15 @@ while (true)
 
                     if (op1 == 1)
                     {
-                        Console.WriteLine("Categories");
-                        inventoryManager.Categories();
+                        Console.WriteLine("+----------------------------------------+");
+                        Console.WriteLine("|              Categories                |");
+                        Console.WriteLine("+----------------------------------------+");
+                        Console.WriteLine("1. Gibson");
+                        Console.WriteLine("2. Fender");
+                        Console.WriteLine("3. Squier");
+                        Console.WriteLine("4. Ibanez");
+                        Console.WriteLine("5. Taylor");
+                        Console.WriteLine("5. C.F Martin");
                     }
 
                     loginSuccessful = true; 
@@ -101,8 +112,15 @@ while (true)
             Console.Clear();
             if (op2 == 1)
             {
-                Console.WriteLine("Categories");
-                inventoryManager.Categories();
+                Console.WriteLine("+----------------------------------------+");
+                Console.WriteLine("|              Categories                |");
+                Console.WriteLine("+----------------------------------------+");
+                Console.WriteLine("1. Gibson");
+                Console.WriteLine("2. Fender");
+                Console.WriteLine("3. Squier");
+                Console.WriteLine("4. Ibanez");
+                Console.WriteLine("5. Taylor");
+                Console.WriteLine("5. C.F Martin");
             }
             break;
         case 4:
