@@ -34,7 +34,6 @@ namespace GuitarShopManagementSystem
         }
         public void SignUp()
         {
-            Console.WriteLine("User Registration");
 
             Console.Write("Username: ");
             string username = Console.ReadLine();

@@ -8,9 +8,9 @@ UserManager userManager = new UserManager();
 CustomerModel customer = new CustomerModel();
 CustomerManager customerManager = new CustomerManager();
 
-Console.WriteLine("+----------------------------------------+");
-Console.WriteLine("|             Guitar Shop                |");
-Console.WriteLine("+----------------------------------------+");
+Console.WriteLine("+---------------------------------------+");
+Console.WriteLine("             Guitar Shop                ");
+Console.WriteLine("+---------------------------------------+");
 Console.WriteLine("1. Login");
 Console.WriteLine("2. Sign up");
 Console.WriteLine("3. Guest User");
@@ -57,15 +57,13 @@ while (true)
 
                     if (op1 == 1)
                     {
-                        Console.WriteLine("+----------------------------------------+");
-                        Console.WriteLine("|              Categories                |");
-                        Console.WriteLine("+----------------------------------------+");
-                        Console.WriteLine("1. Gibson");
-                        Console.WriteLine("2. Fender");
-                        Console.WriteLine("3. Squier");
-                        Console.WriteLine("4. Ibanez");
-                        Console.WriteLine("5. Taylor");
-                        Console.WriteLine("5. C.F Martin");
+                        Console.WriteLine("+---------------------------------------+");
+                        Console.WriteLine("              Categories                ");
+                        Console.WriteLine("+---------------------------------------+");
+                        Console.WriteLine("1. Electric Guitars");
+                        Console.WriteLine("2. Acoustic Guitars");
+                        Console.WriteLine("3. Basses");
+                        Console.WriteLine("4. Accesories");
                     }
 
                     loginSuccessful = true; 
@@ -79,9 +77,9 @@ while (true)
 
             break;
         case 2:
-            Console.WriteLine("+----------------------------------------+");
-            Console.WriteLine("|         User Registration              |");
-            Console.WriteLine("+----------------------------------------+");
+            Console.WriteLine("+---------------------------------------+");
+            Console.WriteLine("         User Registration              ");
+            Console.WriteLine("+---------------------------------------+");
             userManager.SignUp();
             Console.Clear();
             Console.Write("First Name: ");
@@ -112,15 +110,13 @@ while (true)
             Console.Clear();
             if (op2 == 1)
             {
-                Console.WriteLine("+----------------------------------------+");
-                Console.WriteLine("|              Categories                |");
-                Console.WriteLine("+----------------------------------------+");
-                Console.WriteLine("1. Gibson");
-                Console.WriteLine("2. Fender");
-                Console.WriteLine("3. Squier");
-                Console.WriteLine("4. Ibanez");
-                Console.WriteLine("5. Taylor");
-                Console.WriteLine("5. C.F Martin");
+                Console.WriteLine("+---------------------------------------+");
+                Console.WriteLine("              Categories                ");
+                Console.WriteLine("+---------------------------------------+");
+                Console.WriteLine("1. Electric Guitars");
+                Console.WriteLine("2. Acoustic Guitars");
+                Console.WriteLine("3. Basses");
+                Console.WriteLine("4. Accesories");
             }
             break;
         case 4:
