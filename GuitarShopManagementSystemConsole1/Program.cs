@@ -3,13 +3,13 @@
 using GuitarShopManagementSystem;
 using GuitarShopManagementSystemModel.Model;
 
-InventoryManager inventoryManager = new InventoryManager();
 UserManager userManager = new UserManager();
 CustomerModel customer = new CustomerModel();
 CustomerManager customerManager = new CustomerManager();
+ShopManager shopManager = new ShopManager();
 
 Console.WriteLine("+---------------------------------------+");
-Console.WriteLine("             Guitar Shop                ");
+Console.WriteLine("            Vincent Guitars              ");
 Console.WriteLine("+---------------------------------------+");
 Console.WriteLine("1. Login");
 Console.WriteLine("2. Sign up");
@@ -23,9 +23,8 @@ while (true)
     switch (op)
     {
         case 1:
-            bool loginSuccessful = false;
 
-            do
+            while (true)
             {
                 Console.Write("Username: ");
                 customerManager.UserName = Console.ReadLine();
@@ -40,40 +39,73 @@ while (true)
 
                     Console.Clear();
 
-                    string wlcm1 = "+-----------------------------------+";
-                    string wlcm2 = $"        Welcome {userDetails.FName} {userDetails.LName.ToUpper()}";
-                    string wlcm3 = "+-----------------------------------+";
+                    string welcomeBanner1 = "+-----------------------------------+";
+                    string welcomeBanner2 = $"        Welcome {userDetails.FName} {userDetails.LName.ToUpper()}";
+                    string welcomeBanner3 = "+-----------------------------------+";
 
-                    Console.WriteLine(wlcm1);
-                    Console.WriteLine(wlcm2);
-                    Console.WriteLine(wlcm3);
+                    Console.WriteLine(welcomeBanner1);
+                    Console.WriteLine(welcomeBanner2);
+                    Console.WriteLine(welcomeBanner3);
 
-
-                    Console.WriteLine("1. Categories");
-                    Console.WriteLine("2. Shopping Cart");
-                    Console.Write("Enter an option: ");
-                    int op1 = int.Parse(Console.ReadLine());
-                    Console.Clear();
-
-                    if (op1 == 1)
+                    while (true)
                     {
-                        Console.WriteLine("+---------------------------------------+");
-                        Console.WriteLine("              Categories                ");
-                        Console.WriteLine("+---------------------------------------+");
-                        Console.WriteLine("1. Electric Guitars");
-                        Console.WriteLine("2. Acoustic Guitars");
-                        Console.WriteLine("3. Basses");
-                        Console.WriteLine("4. Accesories");
-                    }
+                        Console.WriteLine("1. Shop by Category");
+                        Console.WriteLine("2. Shopping Cart");
+                        Console.WriteLine("3. Exit App");
+                        Console.Write("Enter an option: ");
+                        int op1 = int.Parse(Console.ReadLine());
+                        Console.Clear();
 
-                    loginSuccessful = true; 
+                        switch (op1)
+                        {
+                            case 1:
+                                Console.WriteLine("+---------------------------------------+");
+                                Console.WriteLine("              Categories                ");
+                                Console.WriteLine("+---------------------------------------+");
+                                Console.WriteLine("1. Electric Guitars");
+                                Console.WriteLine("2. Acoustic Guitars");
+                                Console.WriteLine("3. Basses");
+                                Console.WriteLine("4. Accessories");
+                                Console.Write("Enter an option: ");
+                                int op3 = int.Parse(Console.ReadLine());
+                                Console.Clear();
+
+                                switch (op3)
+                                {
+                                    case 1:
+                                        shopManager.ElectricGuitars();
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        break;
+
+                                    // Add cases for other categories as needed
+
+                                    default:
+                                        Console.WriteLine("Invalid option. Please try again.");
+                                        break;
+                                    case 2:
+                                        break;
+                                }
+                                break;
+
+                            case 2:
+                                // Handle Shopping Cart
+                                break;
+                            case 3:
+                                return;
+
+                            default:
+                                Console.WriteLine("Invalid option. Please try again.");
+                                break;
+                        }
+                    }
                 }
                 else
                 {
                     Console.Clear();
                     Console.WriteLine("Login failed. Invalid username or password. Please try again.");
                 }
-            } while (!loginSuccessful);
+            }
 
             break;
         case 2:
@@ -102,23 +134,52 @@ while (true)
             userManager.Register(customer);
             break;
         case 3:
-            Console.WriteLine("WELCOME USER!");
-            Console.WriteLine("1. Categories");
-            Console.WriteLine("2. Shopping Cart");
-            Console.Write("Enter an option: ");
-            int op2 = int.Parse(Console.ReadLine());
-            Console.Clear();
-            if (op2 == 1)
+            while (true)
             {
                 Console.WriteLine("+---------------------------------------+");
-                Console.WriteLine("              Categories                ");
+                Console.WriteLine("             Welcome USER!               ");
                 Console.WriteLine("+---------------------------------------+");
-                Console.WriteLine("1. Electric Guitars");
-                Console.WriteLine("2. Acoustic Guitars");
-                Console.WriteLine("3. Basses");
-                Console.WriteLine("4. Accesories");
+
+                Console.WriteLine("1. Shop by Category");
+                Console.WriteLine("2. Shopping Cart");
+                Console.WriteLine("3. Exit Application");
+                Console.Write("Enter an option: ");
+                int op1 = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+                switch (op1)
+                {
+                    case 1:
+                        Console.WriteLine("+---------------------------------------+");
+                        Console.WriteLine("              Categories                ");
+                        Console.WriteLine("+---------------------------------------+");
+                        Console.WriteLine("1. Electric Guitars");
+                        Console.WriteLine("2. Acoustic Guitars");
+                        Console.WriteLine("3. Basses");
+                        Console.WriteLine("4. Accessories");
+                        Console.Write("Enter an option: ");
+                        int op3 = int.Parse(Console.ReadLine());
+                        Console.Clear();
+
+                        switch (op3)
+                        {
+                            case 1:
+                                shopManager.ElectricGuitars();
+                                Console.ReadKey();
+                                Console.Clear();
+                                break;
+                            case 2:
+
+                                break;
+                            default:
+                                Console.WriteLine("Invalid option. Please try again.");
+                                break;
+                        }
+                        break;
+                    case 3:
+                        return;
+                }
             }
-            break;
         case 4:
             return;
     }
