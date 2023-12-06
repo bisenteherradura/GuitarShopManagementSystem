@@ -46,12 +46,14 @@ while (true)
                     Console.WriteLine(welcomeBanner1);
                     Console.WriteLine(welcomeBanner2);
                     Console.WriteLine(welcomeBanner3);
+                    Console.WriteLine("");
 
                     while (true)
                     {
-                        Console.WriteLine("1. Shop by Category");
-                        Console.WriteLine("2. Shopping Cart");
-                        Console.WriteLine("3. Exit App");
+                        Console.WriteLine("+--------------------------------------+");
+                        Console.WriteLine(" 1. Shop by Category | 2. Shopping Cart ");
+                        Console.WriteLine("+--------------------------------------+");
+
                         Console.Write("Enter an option: ");
                         int op1 = int.Parse(Console.ReadLine());
                         Console.Clear();
@@ -84,6 +86,9 @@ while (true)
                                         Console.WriteLine("Invalid option. Please try again.");
                                         break;
                                     case 2:
+                                        shopManager.AcousticGuitars();
+                                        Console.ReadKey();  
+                                        Console.Clear();
                                         break;
                                 }
                                 break;
@@ -98,6 +103,9 @@ while (true)
                                 Console.WriteLine("Invalid option. Please try again.");
                                 break;
                         }
+                        Console.WriteLine(welcomeBanner1);
+                        Console.WriteLine(welcomeBanner2);
+                        Console.WriteLine(welcomeBanner3);
                     }
                 }
                 else
