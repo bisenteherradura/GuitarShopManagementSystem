@@ -2,12 +2,14 @@
 
 using GuitarShopManagementSystem;
 using GuitarShopManagementSystemModel.Model;
+using System.ComponentModel.Design;
 
 UserManager userManager = new UserManager();
 CustomerModel customer = new CustomerModel();
 CustomerManager customerManager = new CustomerManager();
 ShopManager shopManager = new ShopManager();
 
+menu:
 Console.WriteLine("+---------------------------------------+");
 Console.WriteLine("            Vincent Guitars              ");
 Console.WriteLine("+---------------------------------------+");
@@ -114,8 +116,6 @@ while (true)
                     Console.WriteLine("Login failed. Invalid username or password. Please try again.");
                 }
             }
-
-            break;
         case 2:
             Console.WriteLine("+---------------------------------------+");
             Console.WriteLine("         User Registration              ");
@@ -140,6 +140,12 @@ while (true)
             customer.PNum = phoneNumber;
 
             userManager.Register(customer);
+
+            Console.WriteLine("Registration successful! Returning to the login menu...");
+            Console.ReadKey(); // Optional: Wait for a key press to make it visible to the user
+            Console.Clear();
+
+            goto menu;
             break;
         case 3:
             while (true)
