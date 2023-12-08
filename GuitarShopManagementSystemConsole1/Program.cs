@@ -52,10 +52,9 @@ while (true)
 
                     while (true)
                     {
-                        Console.WriteLine("+--------------------------------------+");
-                        Console.WriteLine(" 1. Shop by Category | 2. Shopping Cart ");
-                        Console.WriteLine("+--------------------------------------+");
-
+                        Console.WriteLine("1. Shop by Category");
+                        Console.WriteLine("2. Shopping Cart");
+                        Console.WriteLine("3. Exit Application");
                         Console.Write("Enter an option: ");
                         int op1 = int.Parse(Console.ReadLine());
                         Console.Clear();
@@ -183,7 +182,9 @@ while (true)
                                 Console.Clear();
                                 break;
                             case 2:
-
+                                shopManager.AcousticGuitars();
+                                Console.ReadKey();
+                                Console.Clear();
                                 break;
                             default:
                                 Console.WriteLine("Invalid option. Please try again.");

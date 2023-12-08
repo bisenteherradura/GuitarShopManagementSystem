@@ -17,13 +17,63 @@ namespace GuitarShopManagementSystem
                     .Where(guitar => guitar.Type.ToLower().Contains("electric"))
                     .ToList();
 
-                foreach (var guitar in electricGuitars)
+                Console.WriteLine("+--------------------------------------------+");
+                Console.WriteLine("               Electric Guitars           ");
+                Console.WriteLine("+--------------------------------------------+");
+
+                for (int i = 0; i < electricGuitars.Count; i++)
                 {
-                    Console.WriteLine("+-----------------------------------------------------+");
-                    Console.WriteLine($"|  Brand: {guitar.Brand,-22} |                    |");
-                    Console.WriteLine($"|  Model: {guitar.Model,-22} | Price: {guitar.Price,11:C} |");
+                    Console.WriteLine($"{i + 1}. {electricGuitars[i].Brand} {electricGuitars[i].Model} - {electricGuitars[i].Price:C}");
+                    Console.WriteLine("+--------------------------------------------+");
+
                 }
-                Console.WriteLine("+-----------------------------------------------------+");
+
+                Console.Write("Enter the number of product: ");
+                int userChoice = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+                if (userChoice >= 1 && userChoice <= electricGuitars.Count)
+                {
+                    var selectedGuitar = electricGuitars[userChoice - 1];
+
+                    Console.WriteLine($"{selectedGuitar.Brand} {selectedGuitar.Model} ");
+                    Console.WriteLine($"{selectedGuitar.Price:C}");
+                    Console.WriteLine("");
+                    Console.WriteLine("Product Description:");
+                    FormatDescription(selectedGuitar.Description);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid selection. Please enter a valid product number.");
+                }
+
+                const int MaxLineLength = 50;
+                static void FormatDescription(string description)
+                {
+                    int startIndex = 0;
+
+                    while (startIndex < description.Length)
+                    {
+                        int endIndex = startIndex + MaxLineLength;
+
+                        if (endIndex >= description.Length)
+                        {
+                            Console.WriteLine($"{description.Substring(startIndex)}");
+                        }
+                        else
+                        {
+                            while (endIndex > startIndex && !char.IsWhiteSpace(description[endIndex]))
+                            {
+                                endIndex--;
+                            }
+
+                            Console.WriteLine($"{description.Substring(startIndex, endIndex - startIndex)}");
+                        }
+
+                        startIndex = endIndex + 1;
+                    }
+                }
+
             }
         }
         public void AcousticGuitars()
@@ -34,18 +84,67 @@ namespace GuitarShopManagementSystem
                     .Where(guitar => guitar.Type.ToLower().Contains("acoustic"))
                     .ToList();
 
-                foreach (var guitar in acousticGuitars)
+                Console.WriteLine("+--------------------------------------------+");
+                Console.WriteLine("               Acoustic Guitars           ");
+                Console.WriteLine("+--------------------------------------------+");
+
+                for (int i = 0; i < acousticGuitars.Count; i++)
                 {
-                    Console.WriteLine("+----------------------------------------------+");
-                    Console.WriteLine($"|  Brand: {guitar.Brand,-15} |                    |");
-                    Console.WriteLine($"|  Model: {guitar.Model,-15} | Price: {guitar.Price,8:C} |");
+                    Console.WriteLine($"{i + 1}. {acousticGuitars[i].Brand} {acousticGuitars[i].Model} - {acousticGuitars[i].Price:C}");
+                    Console.WriteLine("+--------------------------------------------+");
+
                 }
-                Console.WriteLine("+----------------------------------------------+");
+
+                Console.Write("Enter the number of product: ");
+                int userChoice = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+                if (userChoice >= 1 && userChoice <= acousticGuitars.Count)
+                {
+                    var selectedGuitar = acousticGuitars[userChoice - 1];
+
+                    Console.WriteLine($"{selectedGuitar.Brand} {selectedGuitar.Model} ");
+                    Console.WriteLine($"{selectedGuitar.Price:C}");
+                    Console.WriteLine("");
+                    Console.WriteLine("Product Description:");
+                    FormatDescription(selectedGuitar.Description);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid selection. Please enter a valid product number.");
+                }
+
+                const int MaxLineLength = 50;
+                static void FormatDescription(string description)
+                {
+                    int startIndex = 0;
+
+                    while (startIndex < description.Length)
+                    {
+                        int endIndex = startIndex + MaxLineLength;
+
+                        if (endIndex >= description.Length)
+                        {
+                            Console.WriteLine($"{description.Substring(startIndex)}");
+                        }
+                        else
+                        {
+                            while (endIndex > startIndex && !char.IsWhiteSpace(description[endIndex]))
+                            {
+                                endIndex--;
+                            }
+
+                            Console.WriteLine($"{description.Substring(startIndex, endIndex - startIndex)}");
+                        }
+
+                        startIndex = endIndex + 1;
+                    }
+                }
             }
         }
-        public void Order()
+        public void ShoppingCart()
         {
-            
+
         }
     }
 }
