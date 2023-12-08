@@ -11,4 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GuitarShopManagementSystemModel\GuitarShopManagementSystemModel.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstraction\" />
+  </ItemGroup>
 </Project>

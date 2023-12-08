@@ -24,8 +24,6 @@ namespace GuitarShopManagementSystem
                 for (int i = 0; i < electricGuitars.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}. {electricGuitars[i].Brand} {electricGuitars[i].Model} - {electricGuitars[i].Price:C}");
-                    Console.WriteLine("+--------------------------------------------+");
-
                 }
 
                 Console.Write("Enter the number of product: ");
@@ -91,8 +89,6 @@ namespace GuitarShopManagementSystem
                 for (int i = 0; i < acousticGuitars.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}. {acousticGuitars[i].Brand} {acousticGuitars[i].Model} - {acousticGuitars[i].Price:C}");
-                    Console.WriteLine("+--------------------------------------------+");
-
                 }
 
                 Console.Write("Enter the number of product: ");
