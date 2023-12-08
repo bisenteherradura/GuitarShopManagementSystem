@@ -47,7 +47,7 @@ namespace GuitarShopManagementSystem
         {
             return creditCardNumber.Length == 16 && creditCardNumber.All(char.IsDigit);
         }
-        public void ElectricGuitars()
+        public void electricGuitars()
         {
             using (var context = new GuitarShopManagementSystemDBContext())
             {
@@ -99,7 +99,7 @@ namespace GuitarShopManagementSystem
                 }
             }
         }
-        public void AcousticGuitars()
+        public void acousticGuitars()
         {
             using (var context = new GuitarShopManagementSystemDBContext())
             {
@@ -129,6 +129,21 @@ namespace GuitarShopManagementSystem
                     Console.WriteLine("");
                     Console.WriteLine("Product Description:");
                     FormatDescription(selectedGuitar.Description);
+
+                    Console.WriteLine("");
+                    Console.WriteLine("1. Buy");
+                    Console.WriteLine("2. Add to Cart");
+                    Console.Write("Enter an option: ");
+                    int option2 = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+
+                    switch (option2)
+                    {
+                        case 1:
+                            Checkout(selectedGuitar);
+                            break;
+                    }
                 }
                 else
                 {
@@ -136,6 +151,41 @@ namespace GuitarShopManagementSystem
                 }
             }
         }
+
+        public void electricGuitarsGuest()
+        {
+            using (var context = new GuitarShopManagementSystemDBContext())
+            {
+                var electricGuitars = context.inventoryTable
+                    .Where(guitar => guitar.Type.ToLower().Contains("electric"))
+                    .ToList();
+
+                Console.WriteLine("+--------------------------------------------+");
+                Console.WriteLine("               Electric Guitars           ");
+                Console.WriteLine("+--------------------------------------------+");
+
+                for (int i = 0; i < electricGuitars.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {electricGuitars[i].Brand} {electricGuitars[i].Model} - {electricGuitars[i].Price:C}");
+                }
+
+                Console.Write("Enter the number of product: ");
+                int userChoice = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+                if (userChoice >= 1 && userChoice <= electricGuitars.Count)
+                {
+                    var selectedGuitar = electricGuitars[userChoice - 1];
+
+                    Console.WriteLine($"{selectedGuitar.Brand} {selectedGuitar.Model} ");
+                    Console.WriteLine($"{selectedGuitar.Price:C}");
+                    Console.WriteLine("");
+                    Console.WriteLine("Product Description:");
+                    FormatDescription(selectedGuitar.Description);
+                }
+            }
+        }
+
 
         const int MaxLineLength = 50;
         static void FormatDescription(string description)

@@ -8,6 +8,9 @@ namespace GuitarShopManagementSystem
 {
     public class AdminManager
     {
+        public void addProduct()
+        {
 
+        }
     }
 }

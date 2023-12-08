@@ -9,6 +9,8 @@ CustomerModel customer = new CustomerModel();
 CustomerManager customerManager = new CustomerManager();
 ShopManager shopManager = new ShopManager();
 
+
+
 menu:
 Console.WriteLine("+---------------------------------------+");
 Console.WriteLine("            Vincent Guitars              ");
@@ -20,6 +22,7 @@ Console.WriteLine("4. Exit");
 Console.Write("Enter an option: ");
 int op = int.Parse(Console.ReadLine());
 Console.Clear();
+
 while (true)
 {
     switch (op)
@@ -67,8 +70,7 @@ while (true)
                                 Console.WriteLine("+---------------------------------------+");
                                 Console.WriteLine("1. Electric Guitars");
                                 Console.WriteLine("2. Acoustic Guitars");
-                                Console.WriteLine("3. Basses");
-                                Console.WriteLine("4. Accessories");
+                                Console.WriteLine("3. Accessories");
                                 Console.Write("Enter an option: ");
                                 int op3 = int.Parse(Console.ReadLine());
                                 Console.Clear();
@@ -76,7 +78,7 @@ while (true)
                                 switch (op3)
                                 {
                                     case 1:
-                                        shopManager.ElectricGuitars();
+                                        shopManager.electricGuitars();
 
                                         Console.ReadKey();
                                         Console.Clear();
@@ -88,7 +90,7 @@ while (true)
                                         Console.WriteLine("Invalid option. Please try again.");
                                         break;
                                     case 2:
-                                        shopManager.AcousticGuitars();
+                                        shopManager.acousticGuitars();
 
                                         Console.ReadKey();  
                                         Console.Clear();
@@ -170,8 +172,7 @@ while (true)
                         Console.WriteLine("+---------------------------------------+");
                         Console.WriteLine("1. Electric Guitars");
                         Console.WriteLine("2. Acoustic Guitars");
-                        Console.WriteLine("3. Basses");
-                        Console.WriteLine("4. Accessories");
+                        Console.WriteLine("3. Accessories");
                         Console.Write("Enter an option: ");
                         int op3 = int.Parse(Console.ReadLine());
                         Console.Clear();
@@ -179,13 +180,35 @@ while (true)
                         switch (op3)
                         {
                             case 1:
-                                shopManager.ElectricGuitars();
+                                shopManager.electricGuitarsGuest();
+                                Console.WriteLine("");
+                                Console.WriteLine("1. Buy");
+                                Console.WriteLine("2. Add to Cart");
+                                Console.Write("Enter an option: ");
+                                int option2 = int.Parse(Console.ReadLine());
 
+                                if (option2 == 1)
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("Login/Register first!");
+                                    Thread.Sleep(1000);
+                                    Console.Clear();
+                                    goto menu;
+                                }
+                                else if (option2 == 2)
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("Login/Register first!");
+                                    Thread.Sleep(1000);
+                                    Console.Clear();
+                                    goto menu;
+                                }
+                                Console.Clear();
                                 Console.ReadKey();
                                 Console.Clear();
                                 break;
                             case 2:
-                                shopManager.AcousticGuitars();
+                                shopManager.acousticGuitars();
 
                                 Console.ReadKey();
                                 Console.Clear();
