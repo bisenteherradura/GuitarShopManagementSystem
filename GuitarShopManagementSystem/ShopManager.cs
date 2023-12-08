@@ -24,6 +24,7 @@ namespace GuitarShopManagementSystem
             if (shipping == 1 ) 
             {
                 Console.WriteLine($"Thank you for purchasing {inventory.Brand} {inventory.Model} for {inventory.Price:C}!");
+                UpdateInventoryQuantity(inventory.ProductId, 1);
             }
             else if (shipping == 2 )
             {
@@ -33,20 +34,77 @@ namespace GuitarShopManagementSystem
                 Console.Clear();
 
                 if (IsCreditCardValid(creditCardNumber))
-                    {
-                        Console.WriteLine($"Credit card payment processed successfully for {inventory.Price:C}.");
-                        Console.WriteLine($"Thank you for purchasing {inventory.Brand} {inventory.Model}!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid credit card number. Payment failed.");
-                    }
+                {
+                    Console.WriteLine($"Credit card payment processed successfully for {inventory.Price:C}.");
+                    Console.WriteLine($"Thank you for purchasing {inventory.Brand} {inventory.Model}!");
+                    UpdateInventoryQuantity(inventory.ProductId, 1);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid credit card number. Payment failed.");
+                }
             }
         }
         private bool IsCreditCardValid(string creditCardNumber)
         {
             return creditCardNumber.Length == 16 && creditCardNumber.All(char.IsDigit);
         }
+        private void UpdateInventoryQuantity(int productId, int quantityToUpdate)
+        {
+            using (var context = new GuitarShopManagementSystemDBContext())
+            {
+                var inventoryItem = context.inventoryTable.Find(productId);
+
+                if (inventoryItem != null)
+                {
+                    // Ensure the quantity does not go below zero
+                    inventoryItem.Quantity = Math.Max(0, inventoryItem.Quantity - quantityToUpdate);
+                    context.SaveChanges();
+                }
+            }
+        }
+        private void AddToCart(InventoryTable selectedProduct)
+        {
+            using (var context = new GuitarShopManagementSystemDBContext())
+            {
+                UserManager userManager = new UserManager();
+                // Assume you have a UserManager with the logged-in user information
+                var loggedInUser = userManager.GetLoggedInUser();
+
+                if (loggedInUser != null)
+                {
+                    // Check if the product is already in the user's cart
+                    var existingCartItem = context.orderTable
+                        .FirstOrDefault(cartItem => cartItem.UserId == loggedInUser.UserId &&
+                                                      cartItem.ProductId == selectedProduct.ProductId);
+
+                    if (existingCartItem != null)
+                    {
+                        // Update the quantity if the item is already in the cart
+                        existingCartItem.Quantity++;
+                    }
+                    else
+                    {
+                        // Add a new item to the cart if it's not already there
+                        var newCartItem = new OrderTable
+                        {
+                            UserId = loggedInUser.UserId,
+                            ProductId = selectedProduct.ProductId,
+                            Quantity = 1
+                        };
+
+                        context.orderTable.Add(newCartItem);
+                    }
+
+                    context.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("User not logged in. Please log in before adding items to the cart.");
+                }
+            }
+        }
+
         public void electricGuitars()
         {
             using (var context = new GuitarShopManagementSystemDBContext())
@@ -56,7 +114,7 @@ namespace GuitarShopManagementSystem
                     .ToList();
 
                 Console.WriteLine("+--------------------------------------------+");
-                Console.WriteLine("               Electric Guitars           ");
+                Console.WriteLine("               Electric Guitars              ");
                 Console.WriteLine("+--------------------------------------------+");
 
                 for (int i = 0; i < electricGuitars.Count; i++)
@@ -81,6 +139,7 @@ namespace GuitarShopManagementSystem
                     Console.WriteLine("");
                     Console.WriteLine("1. Buy");
                     Console.WriteLine("2. Add to Cart");
+                    Console.WriteLine("3. View Cart");
                     Console.Write("Enter an option: ");
                     int option2 = int.Parse(Console.ReadLine());
 
@@ -90,6 +149,11 @@ namespace GuitarShopManagementSystem
                     {
                         case 1:
                             Checkout(selectedGuitar);
+                            break;
+                        case 2:
+                            AddToCart(selectedGuitar);
+                            break;
+                        case 3:
                             break;
                     }
                 }

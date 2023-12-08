@@ -9,8 +9,6 @@ CustomerModel customer = new CustomerModel();
 CustomerManager customerManager = new CustomerManager();
 ShopManager shopManager = new ShopManager();
 
-
-
 menu:
 Console.WriteLine("+---------------------------------------+");
 Console.WriteLine("            Vincent Guitars              ");

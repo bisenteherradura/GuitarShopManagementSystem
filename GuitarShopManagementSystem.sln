@@ -6,7 +6,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarShopManagementSystem"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarShopManagementSystemModel", "GuitarShopManagementSystemModel\GuitarShopManagementSystemModel.csproj", "{4FE97B4E-157F-4938-9209-A4086CE2A44B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarShopManagementSystemConsole1", "GuitarShopManagementSystemConsole1\GuitarShopManagementSystemConsole1.csproj", "{35DDEE14-DE3D-47E6-B4FD-071BEDBF39E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarShopManagementSystemConsole1", "GuitarShopManagementSystemConsole1\GuitarShopManagementSystemConsole1.csproj", "{35DDEE14-DE3D-47E6-B4FD-071BEDBF39E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarShopManangementSystemConsoleAdmin", "GuitarShopManangementSystemConsoleAdmin\GuitarShopManangementSystemConsoleAdmin.csproj", "{B1058664-8996-4B94-8237-23599983B312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{35DDEE14-DE3D-47E6-B4FD-071BEDBF39E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35DDEE14-DE3D-47E6-B4FD-071BEDBF39E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35DDEE14-DE3D-47E6-B4FD-071BEDBF39E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1058664-8996-4B94-8237-23599983B312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1058664-8996-4B94-8237-23599983B312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1058664-8996-4B94-8237-23599983B312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1058664-8996-4B94-8237-23599983B312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

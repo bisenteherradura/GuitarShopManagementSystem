@@ -68,5 +68,13 @@ namespace GuitarShopManagementSystem
                 return user != null ? user.UserId : 0;
             }
         }
+        public UserTable GetLoggedInUser()
+        {
+            using (var context = new GuitarShopManagementSystemDBContext())
+            {
+                return context.userTable
+                    .FirstOrDefault(u => u.Username == UserName && u.Password == Password);
+            }
+        }
     }
 }
