@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuitarShopManagementSystem.Context.DbModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace GuitarShopManagementSystem.Abstraction
 {
     public abstract class CheckoutProcess
     {
-        public abstract void Checkout(List<Product> cart);
+        public abstract void Checkout(InventoryTable inventory);
     }
 }

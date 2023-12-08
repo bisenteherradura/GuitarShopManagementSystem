@@ -77,6 +77,7 @@ while (true)
                                 {
                                     case 1:
                                         shopManager.ElectricGuitars();
+
                                         Console.ReadKey();
                                         Console.Clear();
                                         break;
@@ -88,6 +89,7 @@ while (true)
                                         break;
                                     case 2:
                                         shopManager.AcousticGuitars();
+
                                         Console.ReadKey();  
                                         Console.Clear();
                                         break;
@@ -107,6 +109,7 @@ while (true)
                         Console.WriteLine(welcomeBanner1);
                         Console.WriteLine(welcomeBanner2);
                         Console.WriteLine(welcomeBanner3);
+                        Console.WriteLine("");
                     }
                 }
                 else
@@ -140,12 +143,11 @@ while (true)
 
             userManager.Register(customer);
 
-            Console.WriteLine("Registration successful! Returning to the login menu...");
+            Console.WriteLine("Registration successful! Press any key to return to login menu.");
             Console.ReadKey(); // Optional: Wait for a key press to make it visible to the user
             Console.Clear();
 
             goto menu;
-            break;
         case 3:
             while (true)
             {
@@ -178,11 +180,13 @@ while (true)
                         {
                             case 1:
                                 shopManager.ElectricGuitars();
+
                                 Console.ReadKey();
                                 Console.Clear();
                                 break;
                             case 2:
                                 shopManager.AcousticGuitars();
+
                                 Console.ReadKey();
                                 Console.Clear();
                                 break;

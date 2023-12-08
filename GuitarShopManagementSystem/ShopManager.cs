@@ -1,5 +1,7 @@
-﻿using GuitarShopManagementSystem.Context;
+﻿using GuitarShopManagementSystem.Abstraction;
+using GuitarShopManagementSystem.Context;
 using GuitarShopManagementSystem.Context.DbModel;
+using GuitarShopManagementSystemModel.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +10,43 @@ using System.Threading.Tasks;
 
 namespace GuitarShopManagementSystem
 {
-    public class ShopManager
+    public class ShopManager : CheckoutProcess
     {
+        public override void Checkout(InventoryTable inventory)
+        {
+            Console.WriteLine("Choose Shipping options");
+            Console.WriteLine("1. Cash on Delivery");
+            Console.WriteLine("2. Credit Card");
+            Console.Write("Enter shipping option: ");
+            int shipping = int.Parse(Console.ReadLine());
+            Console.Clear();
+
+            if (shipping == 1 ) 
+            {
+                Console.WriteLine($"Thank you for purchasing {inventory.Brand} {inventory.Model} for {inventory.Price:C}!");
+            }
+            else if (shipping == 2 )
+            {
+                Console.Write("Enter your credit card number: ");
+                string creditCardNumber = Console.ReadLine();
+                Thread.Sleep(2000);
+                Console.Clear();
+
+                if (IsCreditCardValid(creditCardNumber))
+                    {
+                        Console.WriteLine($"Credit card payment processed successfully for {inventory.Price:C}.");
+                        Console.WriteLine($"Thank you for purchasing {inventory.Brand} {inventory.Model}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid credit card number. Payment failed.");
+                    }
+            }
+        }
+        private bool IsCreditCardValid(string creditCardNumber)
+        {
+            return creditCardNumber.Length == 16 && creditCardNumber.All(char.IsDigit);
+        }
         public void ElectricGuitars()
         {
             using (var context = new GuitarShopManagementSystemDBContext())
@@ -40,39 +77,26 @@ namespace GuitarShopManagementSystem
                     Console.WriteLine("");
                     Console.WriteLine("Product Description:");
                     FormatDescription(selectedGuitar.Description);
+
+                    Console.WriteLine("");
+                    Console.WriteLine("1. Buy");
+                    Console.WriteLine("2. Add to Cart");
+                    Console.Write("Enter an option: ");
+                    int option2 = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+
+                    switch (option2)
+                    {
+                        case 1:
+                            Checkout(selectedGuitar);
+                            break;
+                    }
                 }
                 else
                 {
                     Console.WriteLine("Invalid selection. Please enter a valid product number.");
                 }
-
-                const int MaxLineLength = 50;
-                static void FormatDescription(string description)
-                {
-                    int startIndex = 0;
-
-                    while (startIndex < description.Length)
-                    {
-                        int endIndex = startIndex + MaxLineLength;
-
-                        if (endIndex >= description.Length)
-                        {
-                            Console.WriteLine($"{description.Substring(startIndex)}");
-                        }
-                        else
-                        {
-                            while (endIndex > startIndex && !char.IsWhiteSpace(description[endIndex]))
-                            {
-                                endIndex--;
-                            }
-
-                            Console.WriteLine($"{description.Substring(startIndex, endIndex - startIndex)}");
-                        }
-
-                        startIndex = endIndex + 1;
-                    }
-                }
-
             }
         }
         public void AcousticGuitars()
@@ -110,35 +134,34 @@ namespace GuitarShopManagementSystem
                 {
                     Console.WriteLine("Invalid selection. Please enter a valid product number.");
                 }
-
-                const int MaxLineLength = 50;
-                static void FormatDescription(string description)
-                {
-                    int startIndex = 0;
-
-                    while (startIndex < description.Length)
-                    {
-                        int endIndex = startIndex + MaxLineLength;
-
-                        if (endIndex >= description.Length)
-                        {
-                            Console.WriteLine($"{description.Substring(startIndex)}");
-                        }
-                        else
-                        {
-                            while (endIndex > startIndex && !char.IsWhiteSpace(description[endIndex]))
-                            {
-                                endIndex--;
-                            }
-
-                            Console.WriteLine($"{description.Substring(startIndex, endIndex - startIndex)}");
-                        }
-
-                        startIndex = endIndex + 1;
-                    }
-                }
             }
         }
 
+        const int MaxLineLength = 50;
+        static void FormatDescription(string description)
+        {
+            int startIndex = 0;
+
+            while (startIndex < description.Length)
+            {
+                int endIndex = startIndex + MaxLineLength;
+
+                if (endIndex >= description.Length)
+                {
+                    Console.WriteLine($"{description.Substring(startIndex)}");
+                }
+                else
+                {
+                    while (endIndex > startIndex && !char.IsWhiteSpace(description[endIndex]))
+                    {
+                        endIndex--;
+                    }
+
+                    Console.WriteLine($"{description.Substring(startIndex, endIndex - startIndex)}");
+                }
+
+                startIndex = endIndex + 1;
+            }
+        }
     }
 }
