@@ -17,6 +17,7 @@ namespace GuitarShopManagementSystem
             {
                 InventoryTable inventoryTable = new InventoryTable();
                 inventoryTable.Quantity = product.Qty;
+                inventoryTable.Type = product.Typ;
                 inventoryTable.Brand = product.Brnd;
                 inventoryTable.Model = product.Mdl;
                 inventoryTable.Price = product.Prc;

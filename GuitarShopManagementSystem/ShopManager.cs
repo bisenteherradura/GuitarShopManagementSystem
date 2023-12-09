@@ -63,47 +63,6 @@ namespace GuitarShopManagementSystem
                 }
             }
         }
-        private void AddToCart(InventoryTable selectedProduct)
-        {
-            using (var context = new GuitarShopManagementSystemDBContext())
-            {
-                UserManager userManager = new UserManager();
-                // Assume you have a UserManager with the logged-in user information
-                var loggedInUser = userManager.GetLoggedInUser();
-
-                if (loggedInUser != null)
-                {
-                    // Check if the product is already in the user's cart
-                    var existingCartItem = context.orderTable
-                        .FirstOrDefault(cartItem => cartItem.UserId == loggedInUser.UserId &&
-                                                      cartItem.ProductId == selectedProduct.ProductId);
-
-                    if (existingCartItem != null)
-                    {
-                        // Update the quantity if the item is already in the cart
-                        existingCartItem.Quantity++;
-                    }
-                    else
-                    {
-                        // Add a new item to the cart if it's not already there
-                        var newCartItem = new OrderTable
-                        {
-                            UserId = loggedInUser.UserId,
-                            ProductId = selectedProduct.ProductId,
-                            Quantity = 1
-                        };
-
-                        context.orderTable.Add(newCartItem);
-                    }
-
-                    context.SaveChanges();
-                }
-                else
-                {
-                    Console.WriteLine("User not logged in. Please log in before adding items to the cart.");
-                }
-            }
-        }
 
         public void electricGuitars()
         {
@@ -151,7 +110,7 @@ namespace GuitarShopManagementSystem
                             Checkout(selectedGuitar);
                             break;
                         case 2:
-                            AddToCart(selectedGuitar);
+
                             break;
                         case 3:
                             break;

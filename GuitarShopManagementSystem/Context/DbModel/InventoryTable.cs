@@ -10,11 +10,35 @@ namespace GuitarShopManagementSystem.Context.DbModel
     public class InventoryTable
     {
         [Key]public int ProductId {  get; set; }
-        public int Quantity { get; set; }
+        private int _total;
+        private int _quantity;
+        private int _price;
+        public int Total 
+        {
+            get
+            {
+                return _total;
+            }
+            set
+            {
+                _total = _quantity * _price;
+            } 
+        }
+        public int Quantity 
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+
+            } 
+        }
         public string? Type { get; set; }
         public string? Brand { get; set; }
         public string? Model { get; set; }
-        public string? Price { get; set; }
+        public int Price { get; set; }
         public string? Description { get; set; }
     }
 }

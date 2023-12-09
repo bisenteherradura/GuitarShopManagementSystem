@@ -12,8 +12,9 @@ namespace GuitarShopManagementSystemModel.Model
     {
         public int Id { get; set; }
         public int Qty { get; set; }
+        public string Typ { get; set; }
         public string Brnd { get; set; }
         public string Mdl { get; set; }
-        public string Prc { get; set; }
+        public int Prc { get; set; }
     }
 }

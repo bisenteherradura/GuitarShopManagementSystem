@@ -15,7 +15,7 @@ namespace GuitarShopManagementSystem.Context
         public DbSet<OrderTable> orderTable { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-8VJ97H3;Database=GuitarShopManagementSystem;Trusted_Connection=True;TrustServerCertificate=True; Encrypt=false;");
+            optionsBuilder.UseSqlServer(@"Server=(LocalDB)\LocalDB;Database=GuitarShopManagementSystem;Trusted_Connection=True;TrustServerCertificate=True; Encrypt=false;");
         }
     }
 }

@@ -25,6 +25,8 @@ while (true)
         case 1:
             Console.Write("Quantity: ");
             int quantity = int.Parse(Console.ReadLine());
+            Console.Write("Type: ");
+            string type = Console.ReadLine();
             Console.Write("Brand: ");
             string brand = Console.ReadLine();
             Console.Write("Model: ");
@@ -33,6 +35,7 @@ while (true)
             string price = Console.ReadLine();
 
             product.Qty = quantity;
+            product.Typ = type;
             product.Brnd = brand;
             product.Mdl = model;
             product.Prc = price;
