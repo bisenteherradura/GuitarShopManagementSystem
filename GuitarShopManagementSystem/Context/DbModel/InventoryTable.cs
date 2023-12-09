@@ -12,7 +12,6 @@ namespace GuitarShopManagementSystem.Context.DbModel
         [Key]public int ProductId {  get; set; }
         private int _total;
         private int _quantity;
-        private int _price;
         public int Total 
         {
             get
@@ -21,7 +20,7 @@ namespace GuitarShopManagementSystem.Context.DbModel
             }
             set
             {
-                _total = _quantity * _price;
+                _total = _quantity * Price;
             } 
         }
         public int Quantity 

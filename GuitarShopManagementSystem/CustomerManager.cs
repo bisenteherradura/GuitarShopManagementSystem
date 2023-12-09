@@ -6,26 +6,6 @@ namespace GuitarShopManagementSystem
 {
     public class CustomerManager : UserManager
     {
-        public void Register(CustomerModel customer)
-        {
-            using (var context = new GuitarShopManagementSystemDBContext())
-            {
-                var user = context.userTable.OrderByDescending(u => u.UserId).FirstOrDefault();
-
-                CustomerTable customerTable = new CustomerTable();
-
-                customerTable.User = user;
-                customerTable.FirstName = customer.FName;
-                customerTable.LastName = customer.LName;
-                customerTable.Address = customer.address;
-                customerTable.PhoneNum = customer.PNum;
-
-                context.customerTable.Add(customerTable);
-                context.SaveChanges();
-
-                Console.WriteLine("User successfully registered!");
-            }
-        }
         public class CustomerModel
         {
             public int Id { get; set; }
